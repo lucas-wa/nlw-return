@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Cria uma tabela chamada Feedback apos executar npx prisma migrate dev (ambiente de desenv., seria deploy para producao). Apos a cricao, perguntara o nome da migracao, ou seja, o  foi feita desde a ultima mudanca
+// npx prisma studio abre interface para navegar pelas tabelas no navegador
+// model Feedback {}
+// Migration e uma forma de manter o controle de versionamento do banco de dados. Migrations fazem a criacao das tabelas mesmo em producao.
+
+model Feedback {
+
+  id String @id @default(uuid()) // @id == primary key, uuid() cria um um Universal Unique Identifier
+
+  type       String
+  comment    String
+  screenshot String? // ? == opcional
+
+  @@map("feedbacks")
+}
