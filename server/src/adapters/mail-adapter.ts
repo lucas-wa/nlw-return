@@ -1,7 +1,7 @@
 export interface SendMailData {
 
     subject: string,
-    body: 
+    body: string,
 
 }
 
